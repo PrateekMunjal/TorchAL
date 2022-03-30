@@ -75,6 +75,9 @@ NOTE: Below 5% meains 5 percent of the full training dataset. For example, for C
 
 ### Run the random baseline without strong regularization
 
+<details>
+  <summary>Expand to see the full script</summary>
+
 ```
 pythonExec=$1
 
@@ -138,11 +141,16 @@ $pythonExec tools/main_aml.py --n_GPU $num_GPU \
 --vaal_vae_lr 5e-4 --vaal_disc_lr 5e-4 --vaal_beta 1.0 --vaal_adv_param 1.0 \
 
 ```
+</details>
 
+<br>
 Usage: Assume above script is named as **run.sh**, then we can simply run it 
+
 ```
 sh run.sh `which python`
 ```
+
+<br>
 
 ### Run the random baseline with strong regularization
 
@@ -161,7 +169,15 @@ swa_epochs=5 #50
 
 ## Citing TorchAL
 
-- Some citation text
+If you use TorchAL, please consider citing:
+
+    @inproceedings{Munjal2022TorchAL,
+        title={Towards Robust and Reproducible Active Learning Using Neural Networks}, 
+        author={Prateek Munjal and Nasir Hayat and Munawar Hayat and Jamshid Sourati 
+                and Shadab Khan},
+        booktitle={CVPR},
+        year={2022}
+    }
 
 ## Acknowledgement to codebases which were referenced during the building of TorchAL
 
