@@ -35,7 +35,7 @@ to perform random search over 50 trials for each AL cycle.
 NOTE: In either case we have to download the dataset indexes and follow tools/train_al.py:
 Dataset index sets
 ```shell
-wget https://github.com/PrateekMunjal/wowal/blob/master/dataset_indexes.zip
+wget https://github.com/PrateekMunjal/TorchAL/blob/master/dataset_indexes.zip
 
 ```
 
