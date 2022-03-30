@@ -1,0 +1,6 @@
+python setup.py sdist bdist_wheel
+
+tar tzf dist/<>.zip ## To check files what are in zip
+
+twine upload dist/*
+

@@ -1,0 +1,21 @@
+conda create -n al_pycls python=3.6 -y
+
+conda activate al_pycls
+
+conda install pytorch=1.6 torchvision=0.7 cudatoolkit=10.1 -c pytorch -y
+
+make
+
+yes | pip install yacs tqdm
+
+yes | pip install simplejson torchcontrib
+
+conda install -c conda-forge optuna==2.1.0
+
+yes | pip install plotly
+
+conda install matplotlib -y
+
+conda install scipy scikit-learn -y
+
+conda install -c conda-forge opencv -y

@@ -1,0 +1,12 @@
+torch==1.6.0
+torchcontrib==0.0.2
+torchvision==0.7.0
+tqdm==4.63.0
+yacs==0.1.8
+simplejson==3.17.6
+optuna==2.1.0
+plotly==5.6.0
+matplotlib==3.3.4
+scipy==1.5.2
+scikit-learn==0.24.2
+opencv-python==3.4.2.17
