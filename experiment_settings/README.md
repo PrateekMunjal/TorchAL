@@ -136,3 +136,53 @@ Command to run
 </code>
 
 </pre>
+
+## 4. Transfer learning experiment
+
+This is an interesting experiment where we examine the transferability of the active sets sampled using the 
+source network (VGG16), and use them to train the target network (ResNet18 and WRN-28-2). 
+
+Results on CIFAR 10 dataset
+
+<img src="../paper_images/cifar_10_transfer.png" alt="cifar_10_transfer">
+
+Assuming VGG16 as source network and Resnet18 as target network.
+
+Command to run 
+<pre>
+# We only need to add few switches to apply transfer experiment with few additional steps
+# the additional steps are well explained in the sample notebook below.
+
+--isTransferExp --transfer_model_type resnet_2 \
+--transfer_model_style resnet_style --transfer_model_depth 18 --transfer_dir_specific vanilla \
+
+<code>
+!python3 $HOME_DIRECTORY/tools/main_aml.py --n_GPU $num_GPU \
+--port $port --sampling_fn $sampling_fn --lSet_partition $lSet_partition \
+--seed_id $base_seed \
+--init_partition $init_partition --step_partition $step_partition \
+--dataset $dataset --budget_size $budget_size \
+--out_dir $out_dir \
+--num_aml_trials $num_aml_trials --num_classes $num_classes \
+--al_max_iter $al_iterations \
+--model_type $model_type --model_depth $model_depth \
+--clf_epochs $clf_epochs \
+--eval_period 1 --checkpoint_period 1 \
+--lSetPath $lSetPath --uSetPath $uSetPath --valSetPath $valSetPath \
+--train_dir $train_dir --test_dir $test_dir \
+--dropout_iterations 25 \
+--cfg configs/$dataset/$model_style/$model_type/R-18_4gpu_unreg.yaml \
+--vaal_z_dim 32 --vaal_vae_bs 64 --vaal_epochs 2 \
+--vaal_vae_lr 5e-4 --vaal_disc_lr 5e-4 --vaal_beta 1.0 --vaal_adv_param 1.0 \
+<b style="color:blue">--isTransferExp --transfer_model_type resnet_2 \
+--transfer_model_style resnet_style --transfer_model_depth 18 --transfer_dir_specific vanilla \ </b>
+</code>
+
+</pre>
+
+For interested readers we also share a sample notebook for this experiment. Please note that in the shared notebook we only run model training for few epochs, 
+hence to reproduce results we recommend to train as per the settings mentioned in the main paper. 
+
+Notebook: [Link](https://github.com/PrateekMunjal/TorchAL/blob/master/notebooks/transfer_active_sets.ipynb)
+
+Nbviewer Notebook: [Link](https://nbviewer.org/github/PrateekMunjal/TorchAL/blob/master/notebooks/transfer_active_sets.ipynb)
