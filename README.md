@@ -2,7 +2,22 @@
 
 Source code for CVPR 2022 Paper: [Towards Robust and Reproducible Active Learning Using Neural Networks](https://arxiv.org/abs/2002.09564)
 
-<img src="https://raw.githubusercontent.com/PrateekMunjal/wowal/master/paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/>
+<img src="paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/>
+
+## Abstract
+
+Active learning (AL) is a promising ML paradigm that has the potential to parse through large unlabeled data 
+and help reduce annotation cost in domains where labeling data can be prohibitive. Recently proposed neural 
+network based AL methods use different heuristics to accomplish this goal. In this study, we demonstrate that 
+under identical experimental settings, different types of AL algorithms (uncertainty based, diversity based, 
+and committee based) produce an inconsistent gain over random sampling baseline. Through a variety of 
+experiments, controlling for sources of stochasticity, we show that variance in performance metrics achieved 
+by AL algorithms can lead to results that are not consistent with the previously reported results. We also 
+found that under strong regularization, AL methods show marginal or no advantage over the random sampling 
+baseline under a variety of experimental conditions. Finally, we conclude with a set of recommendations on 
+how to assess the results using a new AL algorithm to ensure results are reproducible and robust under 
+changes in experimental conditions. We share our codes to facilitate AL evaluations. We believe our findings 
+and recommendations will help advance reproducible research in AL using neural networks.
 
 ## What is TorchAL?
 
@@ -29,13 +44,13 @@ to perform random search over 50 trials for each AL cycle.
 
 
 ## Requirements
-* For creating a conda environment, kindly refer to [conda_env.yaml](https://github.com/PrateekMunjal/wowal/blob/master/conda_env.yml)
-* For installing dependencies via pip, kindly refer to [requirements.txt](https://github.com/PrateekMunjal/wowal/blob/master/requirements.txt)
+* For creating a conda environment, kindly refer to [conda_env.yaml](conda_env.yml)
+* For installing dependencies via pip, kindly refer to [requirements.txt](requirements.txt)
 
 NOTE: In either case we have to download the dataset indexes and follow tools/train_al.py:
 Dataset index sets
 ```shell
-wget https://github.com/PrateekMunjal/TorchAL/blob/master/dataset_indexes.zip
+wget https://github.com/PrateekMunjal/torchal/blob/master/dataset_indexes.zip
 
 ```
 
@@ -44,7 +59,8 @@ wget https://github.com/PrateekMunjal/TorchAL/blob/master/dataset_indexes.zip
 ### From source
 
 ```
-!wget codebase repo link
+git clone https://github.com/PrateekMunjal/TorchAL
+cd TorchAL
 python setup.py install
 ```
 
@@ -52,6 +68,13 @@ python setup.py install
 ```
 pip install torchal
 ```
+
+## Dataset indexes and Pretrained models
+
+* Dataset and active set indexes: [Click here to download](https://github.com/PrateekMunjal/TorchAL/blob/master/dataset_indexes.zip)
+* Pretrained CIFAR models trained on 10% data: [Click here to download](https://drive.google.com/drive/folders/102nZ5pCofBDncKDFQc9tnyvQ8__IcIOi)
+
+For interested readers we recommend to checkout notebook ensuring reproducible active sets. [Link to Notebook](https://github.com/PrateekMunjal/TorchAL/blob/master/notebooks/Active_Sampling.ipynb)
 
 ## AL algorithms implemented
 
@@ -70,6 +93,8 @@ NOTE: Below 5% meains 5 percent of the full training dataset. For example, for C
 * Different budget sizes: 5%, 10% 
 * Different validation set sizes: 2%, 5%, 10%
 * Effect of regularization techniques
+* We share [notebooks](https://github.com/PrateekMunjal/TorchAL/tree/master/notebooks) demonstrating such different experimental settings. 
+* For interested readers we recommend to follow the summary of experiments presented [here](https://github.com/PrateekMunjal/TorchAL/tree/master/experiment_settings).
 
 ## Examples
 
@@ -179,8 +204,15 @@ If you use TorchAL, please consider citing:
         year={2022}
     }
 
-## Acknowledgement to codebases which were referenced during the building of TorchAL
+## Acknowledgement 
+
+This repository is built using the following repositories. Thanks for their wonderful works. 
 
 * [pycls](https://github.com/facebookresearch/pycls)
 * [Coreset](https://github.com/ozansener/active_learning_coreset)
 * [VAAL](https://github.com/sinhasam/vaal)
+* [CoreGCN](https://github.com/razvancaramalau/Sequential-GCN-for-Active-Learning)
+
+## Contact
+
+If you have any question about this project, please feel free to contact prateekmunjal31@gmail.com or skhan.shadab@gmail.com.
