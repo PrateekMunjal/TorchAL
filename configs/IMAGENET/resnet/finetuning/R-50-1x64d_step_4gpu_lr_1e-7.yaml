@@ -1,0 +1,48 @@
+MODEL:
+  TYPE: resnet
+  DEPTH: 50
+  NUM_CLASSES: 1000
+RESNET:
+  TRANS_FUN: bottleneck_transform
+  NUM_GROUPS: 1
+  WIDTH_PER_GROUP: 64
+  STRIDE_1X1: False
+BN:
+  ZERO_INIT_FINAL_GAMMA: True
+OPTIM:
+  BASE_LR: 1e-7
+  LR_POLICY: steps
+  STEPS: [0, 25, 50, 75]
+  LR_MULT: 0.2
+  MAX_EPOCH: 100
+  MOMENTUM: 0.9
+  NESTEROV: True
+  WEIGHT_DECAY: 1e-5
+TRAIN:
+  DATASET: imagenet
+  SPLIT: train
+  BATCH_SIZE: 128
+  IM_SIZE: 224
+  EVAL_PERIOD: 1
+  WEIGHTS: /raid/shadab/prateek/dgx30/prateek/pycls/resnet/checkpoints/valSet_acc_47.04296875_model_epoch_0093.pyth
+  #For randAug
+  #WEIGHTS: /raid/shadab/prateek/dgx30/prateek/pycls/resnet_finetune/lr_1e-4/checkpoints/valSet_acc_47.15625_model_epoch_0037.pyth
+TEST:
+  DATASET: imagenet
+  SPLIT: val
+  BATCH_SIZE: 60
+  IM_SIZE: 256
+  ##For testing uncomment below line
+  #WEIGHTS: /raid/shadab/prateek/dgx30/prateek/pycls/resnet_finetune/lr_1e-4/checkpoints/valSet_acc_47.15625_model_epoch_0037.pyth
+NUM_GPUS: 4
+DATA_LOADER:
+  NUM_WORKERS: 4
+CUDNN:
+  BENCHMARK: True
+OUT_DIR: ./resnet_finetunable_lr_1e-7
+# #Apply randAug by uncommenting below lines
+# # Also turn off any weight decay inside randAug
+# RANDAUG:
+#   ACTIVATE: True
+#   N: 2
+#   M: 7

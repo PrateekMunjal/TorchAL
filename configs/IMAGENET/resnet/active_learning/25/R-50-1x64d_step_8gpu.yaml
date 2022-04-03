@@ -1,0 +1,49 @@
+MODEL:
+  TYPE: resnet
+  DEPTH: 50
+  NUM_CLASSES: 1000
+RESNET:
+  TRANS_FUN: bottleneck_transform
+  NUM_GROUPS: 1
+  WIDTH_PER_GROUP: 64
+  STRIDE_1X1: False
+BN:
+  ZERO_INIT_FINAL_GAMMA: True
+OPTIM:
+  BASE_LR: 2e-3
+  LR_POLICY: steps
+  STEPS: [0, 30, 60, 90]
+  LR_MULT: 0.2
+  MAX_EPOCH: 100
+  MOMENTUM: 0.9
+  NESTEROV: False
+  WEIGHT_DECAY: 3e-4
+TRAIN:
+  DATASET: imagenet
+  SPLIT: train
+  BATCH_SIZE: 256
+  IM_SIZE: 224
+  EVAL_PERIOD: 1
+TEST:
+  DATASET: imagenet
+  SPLIT: val
+  BATCH_SIZE: 200
+  IM_SIZE: 256
+  ##For testing uncomment below line
+  #WEIGHTS: 
+NUM_GPUS: 8
+DATA_LOADER:
+  NUM_WORKERS: 4
+CUDNN:
+  BENCHMARK: True
+OUT_DIR: .
+ACTIVE_LEARNING:
+  ACTIVATE: True
+  LSET_PATH: /raid/shadab/prateek/dgx30/prateek/pycls/al_results/20/lSet.npy
+  USET_PATH: /raid/shadab/prateek/dgx30/prateek/pycls/al_results/20/uSet.npy
+  VALSET_PATH: /raid/shadab/prateek/dgx30/prateek/pycls/valSet_IMAGENET.npy
+  MODEL_LOAD_DIR: /raid/shadab/prateek/dgx30/prateek/pycls/al_results/20/checkpoints/valSet_acc_66.92415730337078_model_epoch_0094.pyth
+  MODEL_SAVE_DIR: /raid/shadab/prateek/dgx30/prateek/pycls/al_results/25/models/Imagenet/
+  RESULTS_DIR: /raid/shadab/prateek/dgx30/prateek/pycls/al_results/25/
+  BUDGET_SIZE: 64058 #10% of lSet where lSet contains 128k datapoints.
+#   MAX_AL_EPOCHS: 3
