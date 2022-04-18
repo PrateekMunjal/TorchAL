@@ -42,7 +42,7 @@ hence to reproduce results we recommend to train as per the settings mentioned i
 
 Notebook: [Link](../notebooks/budgetsize_exp.ipynb)
 
-Nbviewer Notebook: [Link](https://nbviewer.org/github/PrateekMunjal/wowal/blob/master/notebooks/budgetsize_exp.ipynb)
+Nbviewer Notebook: [Link](https://nbviewer.org/github/PrateekMunjal/TorchAL/blob/master/notebooks/budgetsize_exp.ipynb)
 
 
 ## 2. Varying validation set size
@@ -85,7 +85,7 @@ hence to reproduce results we recommend to train as per the settings mentioned i
 
 Notebook: [Link](../notebooks/valSetexp_cifar10.ipynb)
 
-Nbviewer Notebook: [Link](https://nbviewer.org/github/PrateekMunjal/wowal/blob/master/notebooks/valSetexp_cifar10.ipynb)
+Nbviewer Notebook: [Link](https://nbviewer.org/github/PrateekMunjal/TorchAL/blob/master/notebooks/valSetexp_cifar10.ipynb)
 
 ## 3. Add strong-regularization in training pipeline
 
