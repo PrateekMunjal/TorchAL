@@ -1,9 +1,12 @@
 # TorchAL codebase
 
-Source code for CVPR 2022 Paper: [Towards Robust and Reproducible Active Learning Using Neural Networks](https://arxiv.org/abs/2002.09564)
+Source code for our CVPR 2022 Paper: [Towards Robust and Reproducible Active Learning Using Neural Networks](https://arxiv.org/abs/2002.09564)
 
-<img src="paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/>
+<figure>
 
+<img src="https://raw.githubusercontent.com/PrateekMunjal/TorchAL/master/paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/>
+<figcaption align = "center">Figure 1. Comparisons of AL methods on CIFAR10 (top) and CIFAR100 (bottom) for different initial labeled sets L0, L1, · · · , L4. The mean accuracy for the base model (at 10% labeled data) is noted at the bottom of each subplot. The model is trained 5 times for different random initialization seeds where for the first seed we use AutoML to tune hyper-parameters and re-use these hyper-parameters for the other 4 seeds.</figcaption>
+</figure>
 ## Abstract
 
 Active learning (AL) is a promising ML paradigm that has the potential to parse through large unlabeled data 
@@ -31,7 +34,7 @@ active learning (AL) algorithms. Our tookit extends the widely used [pycls](http
 * We report strong random baselines across widely used architectures and datasets.
 * Our baselines are well-trained using AutoML which helps in reducing the bias introduced by choosing sub-optimal hyper-parameters.
 * As we dream of reproducible results in AL, we release the training, validation index sets so that newer AL methods in future can use exact labeled set for training as we used to report our strong baselines.
-* For familiarity with the codebase, we recommend interested users to read the tutorials. 
+* For familiarity with the codebase, we recommend interested users to go through the [notebooks](https://github.com/PrateekMunjal/TorchAL/tree/master/notebooks). 
 
 ## AutoML in Active Learning
 
@@ -40,8 +43,9 @@ Thus in contrast to contemporary AL methods which fix the training hyper-paramet
 tune the training hyper-parameters using AutoML. To facilitate this we make use of [optuna](https://optuna.org/)
 to perform random search over 50 trials for each AL cycle.
 
-<img src="./paper_images/AL_cycles_anim.gif" />
+<!-- <img src="./paper_images/AL_cycles_anim.gif" />-->
 
+<img src="https://raw.githubusercontent.com/PrateekMunjal/TorchAL/master/paper_images/AL_cycles_anim.gif" />
 
 ## Requirements
 * For creating a conda environment, kindly refer to [conda_env.yaml](conda_env.yml)
