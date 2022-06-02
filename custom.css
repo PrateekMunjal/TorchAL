@@ -1,0 +1,39 @@
+html.dimBackground .slide-background { opacity: 0.4 !important; }
+
+/* make code sections larger */
+.reveal pre code {
+    max-height: 525px;
+}
+
+/* images without borders */
+.reveal section img { background:none; border:none; box-shadow:none; }
+
+.reveal pre {
+    box-shadow: none;
+}
+
+/* two-column layout */
+#left {
+    left: -8.33%;
+    text-align: left;
+    float: left;
+    width: 50%;
+    z-index: -10;
+}
+
+#right {
+    left: 31.25%;
+    top: 75px;
+    float: right;
+    text-align: right;
+    z-index: -10;
+    width: 50%;
+}
+
+/* inline-code with light grey background*/
+.reveal code {
+  /* background: #F5F5F5; /* lighter */
+  background: #e7e8e2; /* darker */
+  border-radius: 2px;
+  padding: 1px;
+}
