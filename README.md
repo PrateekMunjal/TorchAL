@@ -2,16 +2,18 @@
 
 Source code for our CVPR 2022 Paper: [Towards Robust and Reproducible Active Learning Using Neural Networks](https://arxiv.org/abs/2002.09564)
 
-<!-- <figure>
+<figure>
 
-<img src="https://raw.githubusercontent.com/PrateekMunjal/TorchAL/master/paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/>
+<!-- <img src="https://raw.githubusercontent.com/PrateekMunjal/TorchAL/master/paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/> -->
+<h2 style="text-align: center;">CIFAR10 Results</h2>
+<img src="paper_images/figure1_cifar10.png" alt="cifar10_five_lSet_statistics"/>
+
+<h2 style="text-align: center;">CIFAR100 Results</h2>
+<img src="paper_images/figure1_cifar100.png" alt="cifar100_five_lSet_statistics"/>
+
 <figcaption align = "center">Figure 1. Comparisons of AL methods on CIFAR10 (top) and CIFAR100 (bottom) for different initial labeled sets L0, L1, · · · , L4. The mean accuracy for the base model (at 10% labeled data) is noted at the bottom of each subplot. The model is trained 5 times for different random initialization seeds where for the first seed we use AutoML to tune hyper-parameters and re-use these hyper-parameters for the other 4 seeds.</figcaption>
-</figure> -->
+</figure>
 
-<!-- <iframe src="paper_images/figure1_cifar10.pdf" style="width: 100%;height: 100%;border: none;"></iframe> -->
-
-<embed src="paper_images/figure1_cifar10.pdf" width="500" height="375" 
- type="application/pdf">
 
 ## Abstract
 
