@@ -46,14 +46,22 @@ active learning (AL) algorithms. Our tookit extends the widely used [pycls](http
 
 ## AutoML in Active Learning
 
-During AL iterations we observed that labeled set changes and therefore does the class distribution too. 
-Thus in contrast to contemporary AL methods which fix the training hyper-parameters at the start of AL, we 
-tune the training hyper-parameters using AutoML. To facilitate this we make use of [optuna](https://optuna.org/)
+* During AL iterations we observed that labeled set changes and therefore does the class distribution too. 
+
+* Most prior works in AL fix the hyper-parameters at the start of AL cycle. We note that this imposes a very strong assumption i.e <i>the hyper-parameters tuned for initial labeled partion **will remain optimal** for all future AL iterations.</i>
+
+* Thus in contrast to contemporary AL methods which fix the training hyper-parameters at the start of AL, we 
+tune the training hyper-parameters using AutoML. 
+
+* To facilitate this we make use of [optuna](https://optuna.org/)
 to perform random search over 50 trials for each AL cycle.
 
 <!-- <img src="./paper_images/AL_cycles_anim.gif" />-->
 
 <img src="https://raw.githubusercontent.com/PrateekMunjal/TorchAL/master/paper_images/AL_cycles_anim.gif" />
+
+## Poster presented at CVPR 22
+<img src="paper_images/cvpr_poster.png" />
 
 ## Requirements
 * For creating a conda environment, kindly refer to [conda_env.yaml](conda_env.yml)
