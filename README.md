@@ -8,7 +8,11 @@ Source code for our CVPR 2022 Paper: [Towards Robust and Reproducible Active Lea
 <figcaption align = "center">Figure 1. Comparisons of AL methods on CIFAR10 (top) and CIFAR100 (bottom) for different initial labeled sets L0, L1, · · · , L4. The mean accuracy for the base model (at 10% labeled data) is noted at the bottom of each subplot. The model is trained 5 times for different random initialization seeds where for the first seed we use AutoML to tune hyper-parameters and re-use these hyper-parameters for the other 4 seeds.</figcaption>
 </figure> -->
 
-<iframe src="paper_images/figure1_cifar10.pdf" style="width: 100%;height: 100%;border: none;"></iframe>
+<!-- <iframe src="paper_images/figure1_cifar10.pdf" style="width: 100%;height: 100%;border: none;"></iframe> -->
+
+<embed src="paper_images/figure1_cifar10.pdf" width="500" height="375" 
+ type="application/pdf">
+
 ## Abstract
 
 Active learning (AL) is a promising ML paradigm that has the potential to parse through large unlabeled data 
