@@ -2,6 +2,8 @@
 
 Source code for our CVPR 2022 Paper: [Towards Robust and Reproducible Active Learning Using Neural Networks](https://arxiv.org/abs/2002.09564)
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-robust-and-reproducible-active/active-learning-on-cifar10-10000)](https://paperswithcode.com/sota/active-learning-on-cifar10-10000?p=towards-robust-and-reproducible-active)
+
 <figure>
 
 <!-- <img src="https://raw.githubusercontent.com/PrateekMunjal/TorchAL/master/paper_images/cifar_five_lSet_statistics_latest_wo_cog_HR.png" alt="cifar_five_lSet_statistics_latest_wo_cog"/> -->
