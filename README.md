@@ -194,7 +194,7 @@ $pythonExec tools/main_aml.py --n_GPU $num_GPU \
 Usage: Assume above script is named as **run.sh**, then we can simply run it 
 
 ```
-sh run.sh `which python`
+sh run_exp.sh
 ```
 
 <br>
