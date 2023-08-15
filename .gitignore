@@ -5,11 +5,7 @@ build/
 check_scripts/
 class_distribs/
 
-data/CIFAR10/train-CIFAR10
-data/CIFAR10/test-CIFAR10
-
-data/CIFAR100/train-CIFAR100
-data/CIFAR100/test-CIFAR100
+data/
 
 overlap_figs/
 *.pyc

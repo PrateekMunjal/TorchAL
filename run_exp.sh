@@ -34,8 +34,8 @@ swa_epochs=5 #50
 log_iter=40
 
 #Data arguments
-train_dir=~/TorchAL/data_indexes/$dataset/train-$dataset/
-test_dir=~/TorchAL/data_indexes/$dataset/test-$dataset/
+train_dir=~/TorchAL/data/$dataset/train-$dataset/
+test_dir=~/TorchAL/data/$dataset/test-$dataset/
 lSetPath=~/TorchAL/data_indexes/$dataset/partition_$lSet_partition/lSet_$dataset.npy
 uSetPath=~/TorchAL/data_indexes/$dataset/partition_$lSet_partition/uSet_$dataset.npy
 valSetPath=~/TorchAL/data_indexes/$dataset/partition_$lSet_partition/valSet_$dataset.npy
