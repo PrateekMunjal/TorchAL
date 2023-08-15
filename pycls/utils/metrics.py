@@ -32,7 +32,7 @@ def topks_correct(preds, labels, ks):
     # (i, j) = 1 if top i-th prediction for the j-th sample is correct
     top_max_k_correct = top_max_k_inds.eq(rep_max_k_labels)
     # Compute the number of topk correct predictions for each k
-    if torch.__version__=='1.8.1':
+    if torch.__version__=='2.0.1':
         topks_correct = [
             top_max_k_correct[:k, :].contiguous().view(-1).float().sum() for k in ks
         ]
