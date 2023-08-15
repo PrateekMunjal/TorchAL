@@ -68,6 +68,7 @@ class Data:
             "SVHN",
             "MNIST",
             "STL10",
+            "RSNA",
         ]:
             ops = []
             if self.is_augmented:
@@ -100,6 +101,8 @@ class Data:
                     ]
                     # import PIL
                     # ops = [transforms.Resize(256, interpolation=PIL.Image.BICUBIC), transforms.CenterCrop(224)]
+                elif self.dataset == "RSNA":
+                    ops = []
                 else:
                     raise NotImplementedError
 
@@ -139,6 +142,10 @@ class Data:
 
                 elif self.dataset == "IMAGENET":
                     # ops.append(RandAugmentPolicy(N=1, M=9))
+                    ops.append(
+                        RandAugmentPolicy(N=self.rand_augment_N, M=self.rand_augment_M)
+                    )
+                elif self.dataset == "RSNA":
                     ops.append(
                         RandAugmentPolicy(N=self.rand_augment_N, M=self.rand_augment_M)
                     )
@@ -274,6 +281,33 @@ class Data:
             )
             # imagenet = ImageNet(save_dir,train=isTrain,transform=preprocess_steps,download=isDownload)
             return imagenet, len(imagenet)
+        
+        elif self.dataset == "RSNA":
+            # if preprocess steps undefined
+            if len(preprocess_steps) == 0:
+                preprocess_steps = self.getPreprocessOps()
+            
+            if isDownload:
+                print("Download RSNA Dataset is not supported. Please run `download_data.sh`")
+                raise NotImplementedError
+
+            from torchxrayvision.datasets import RSNA_Pneumonia_Dataset
+            if isTrain:
+                rsna = RSNA_Pneumonia_Dataset(
+                    imgpath=save_dir+"/stage_2_train_images_jpg", 
+                    csvpath=save_dir+"/stage_2_train_labels.csv",
+                    views=["*"],
+                    transform=preprocess_steps
+                )
+            else:
+                rsna = RSNA_Pneumonia_Dataset(
+                    imgpath=save_dir+"/stage_2_test_images_jpg", 
+                    csvpath=save_dir+"/stage_2_train_labels.csv",
+                    views=["*"],
+                    transform=preprocess_steps
+                )
+            
+            return rsna, len(rsna)
 
         else:
             print(
@@ -586,7 +620,7 @@ class Data:
         torch.manual_seed(seed_id)
         np.random.seed(seed_id)
 
-        if self.dataset in ["MNIST", "CIFAR10", "CIFAR100", "SVHN", "STL10"]:
+        if self.dataset in ["MNIST", "CIFAR10", "CIFAR100", "SVHN", "STL10", "RSNA"]:
             n_datapts = len(data)
             idx = [i for i in range(n_datapts)]
             splitIdx = int(split_ratio * n_datapts)
