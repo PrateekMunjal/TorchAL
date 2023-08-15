@@ -26,3 +26,4 @@ docs/
 make.bat
 
 upload_pip.txt
+.venv
