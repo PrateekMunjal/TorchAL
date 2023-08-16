@@ -69,7 +69,7 @@ class SubPolicy(object):
             "translateY": np.linspace(0, 150 / 331, MAX_PARAM),
             "rotate": np.linspace(0, 30, MAX_PARAM),
             "color": np.linspace(0.0, 0.9, MAX_PARAM),
-            "posterize": np.round(np.linspace(8, 4, MAX_PARAM), 0).astype(np.int),
+            "posterize": np.round(np.linspace(8, 4, MAX_PARAM), 0).astype(np.int64),
             "solarize": np.linspace(256, 0, MAX_PARAM),
             "contrast": np.linspace(0.0, 0.9, MAX_PARAM),
             "sharpness": np.linspace(0.0, 0.9, MAX_PARAM),
