@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 import numpy as np
 from torch.utils.data.sampler import SubsetRandomSampler  # , SequentialSampler
-from .autoaugment import RandAugmentPolicy, SplitAugmentPolicy
+from al_utils.autoaugment import RandAugmentPolicy, SplitAugmentPolicy
 from pycls.datasets.sampler import IndexedSequentialSampler, IndexedDistributedSampler
 
 
@@ -102,7 +102,11 @@ class Data:
                     # import PIL
                     # ops = [transforms.Resize(256, interpolation=PIL.Image.BICUBIC), transforms.CenterCrop(224)]
                 elif self.dataset == "RSNA":
-                    ops = []
+                    ops = [
+                        transforms.Resize(256, antialias=True),
+                        transforms.RandomResizedCrop((224,224), antialias=True),
+                    ]
+                    
                 else:
                     raise NotImplementedError
 
@@ -151,6 +155,8 @@ class Data:
                     )
 
             ops.append(transforms.ToTensor())
+            if self.dataset == "RSNA":
+                ops.append(transforms.Lambda(lambda x: x.expand(3,*x.shape[1:])),)
 
             if self.eval_mode:
                 if self.dataset == "IMAGENET":
@@ -158,6 +164,12 @@ class Data:
                         transforms.Resize(256),
                         transforms.CenterCrop(224),
                         transforms.ToTensor(),
+                    ]
+                elif self.dataset == "RSNA":
+                    ops = [
+                        transforms.Resize((224,224), antialias=True),
+                        transforms.ToTensor(),             
+                        transforms.Lambda(lambda x: x.expand(3,*x.shape[1:])),
                     ]
                 else:
                     ops = [transforms.ToTensor()]
@@ -287,24 +299,17 @@ class Data:
             if len(preprocess_steps) == 0:
                 preprocess_steps = self.getPreprocessOps()
             
-            if isDownload:
-                print("Warning: Download RSNA Dataset is not supported. Please run `download_data.sh`")
+            # if isDownload:
+            #     print("Warning: Download RSNA Dataset is not supported. Please run `download_data.sh`. Ignore this if you already download")
                 # raise NotImplementedError
 
-            from torchxrayvision.datasets import RSNA_Pneumonia_Dataset
-            if isTrain:
-                rsna = RSNA_Pneumonia_Dataset(
-                    imgpath=save_dir+"/stage_2_train_images_jpg", 
-                    views=["*"],
-                    transform=preprocess_steps
-                )
-            else:
-                rsna = RSNA_Pneumonia_Dataset(
-                    imgpath=save_dir+"/stage_2_test_images_jpg", 
-                    views=["*"],
-                    transform=preprocess_steps
-                )
-            
+            from pycls.datasets.rsna import RSNA
+
+            rsna = RSNA(
+                data_path=save_dir, 
+                csv_path="data/RSNA/stage_2_train_labels.csv",
+                transforms=transforms.Compose(preprocess_steps)
+            )
             return rsna, len(rsna)
 
         else:
@@ -378,6 +383,7 @@ class Data:
             "IMAGENET",
             "SVHN",
             "STL10",
+            "RSNA",
         ], "Sorry the dataset {} is not supported. Currently we support ['MNIST','CIFAR10']".format(
             self.dataset
         )

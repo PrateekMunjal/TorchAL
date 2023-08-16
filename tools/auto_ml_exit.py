@@ -41,7 +41,7 @@ def al_main(cfg, args, trainDataset, valDataset, dataObj, trial, isPruning):
     os.makedirs(cfg.OUT_DIR, exist_ok=True)
     # Save the config
     custom_dump_cfg(cfg)
-
+    print("config", cfg)
     if cfg.NUM_GPUS > 1:
         print("============================")
         print("Number of Gpus available for multiprocessing: {}".format(cfg.NUM_GPUS))
