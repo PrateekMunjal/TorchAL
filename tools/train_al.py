@@ -422,7 +422,7 @@ def train_model(
     uSet = []
 
     # handles when we pass cifar/svhn datasets
-    if cfg.TRAIN.DATASET in ["CIFAR10", "CIFAR100", "SVHN", "MNIST", "STL10"]:
+    if cfg.TRAIN.DATASET in ["CIFAR10", "CIFAR100", "SVHN", "MNIST", "STL10", "RSNA"]:
         # get partitions
         lSet, uSet, valSet = dataObj.loadPartitions(
             lSetPath=cfg.ACTIVE_LEARNING.LSET_PATH,

@@ -288,21 +288,19 @@ class Data:
                 preprocess_steps = self.getPreprocessOps()
             
             if isDownload:
-                print("Download RSNA Dataset is not supported. Please run `download_data.sh`")
-                raise NotImplementedError
+                print("Warning: Download RSNA Dataset is not supported. Please run `download_data.sh`")
+                # raise NotImplementedError
 
             from torchxrayvision.datasets import RSNA_Pneumonia_Dataset
             if isTrain:
                 rsna = RSNA_Pneumonia_Dataset(
                     imgpath=save_dir+"/stage_2_train_images_jpg", 
-                    csvpath=save_dir+"/stage_2_train_labels.csv",
                     views=["*"],
                     transform=preprocess_steps
                 )
             else:
                 rsna = RSNA_Pneumonia_Dataset(
                     imgpath=save_dir+"/stage_2_test_images_jpg", 
-                    csvpath=save_dir+"/stage_2_train_labels.csv",
                     views=["*"],
                     transform=preprocess_steps
                 )

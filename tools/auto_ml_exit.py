@@ -190,7 +190,7 @@ def objective(trial, cfg, args, out_dir_path, isPruning):
     cfg.RNG_SEED = args.seed_id
 
     # load datasets
-    if args.dataset in ["CIFAR10", "CIFAR100", "SVHN", "MNIST", "STL10"]:
+    if args.dataset in ["CIFAR10", "CIFAR100", "SVHN", "MNIST", "STL10", "RSNA"]:
         dataObj = custom_Data(
             dataset=cfg.TRAIN.DATASET, israndAug=cfg.RANDAUG.ACTIVATE, args=args
         )
